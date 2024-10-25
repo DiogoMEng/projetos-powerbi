@@ -48,7 +48,7 @@ Visão Geral:
 Evolução de Vendas por Mês:
 ![alt text](public/img/preVisualizacao2.png)
 
-Evolução de Vendas por Ano:
+Pedidos mais Requisitados:
 ![alt text](public/img/preVisualizacao3.png)
 
 # 🚀 Como Usar
