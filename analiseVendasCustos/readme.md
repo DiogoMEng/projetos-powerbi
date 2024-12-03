@@ -55,7 +55,11 @@ O Dashboard inclui as seguintes métricas e KPIs:
 
 # 📷 Pré-visualização
 
-falta inserir
+Visão Geral do Painel:
+![falta inserir](public/visao_geral_painel.png)
+
+Visão de Produtos:
+![alt text](public/visao_produtos.png)
 
 ---
 
