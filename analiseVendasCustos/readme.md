@@ -61,6 +61,9 @@ Visão Geral do Painel:
 Visão de Produtos:
 ![alt text](public/visao_produtos.png)
 
+Visão de Clientes:
+![alt text](public/visao_clientes.png)
+
 ---
 
 # 🚀 Como Usar
