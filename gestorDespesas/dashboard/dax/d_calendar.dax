@@ -1,0 +1,15 @@
+﻿EVALUATE
+ADDCOLUMNS (
+	CALENDARAUTO (),
+	"Dia", DAY ( [Date] ),
+	"Mês", MONTH ( [Date] ),
+	"Ano", YEAR ( [Date] ),
+	"Dia da Semana", WEEKDAY ( [Date], 1 ),
+	"Dia da Semana por Extenso", FORMAT ( [Date], "dddd" ),
+	"Mês Curto", FORMAT ( [Date], "mmm" ),
+	"Mês por Extenso", FORMAT ( [Date], "mmmm" ),
+	"Mês/Ano", FORMAT ( [Date], "mmm/yyyy" ),
+	"Mês/Ano Ordenado", FORMAT ( [Date], "yyyymm" ),
+	"Trimestre", FORMAT ( [Date], "Q" ) & "º Trim.",
+	"Semestre", IF ( MONTH ( [Date] ) <= 6, "1º Semestre", "2º Semestre" )
+)
