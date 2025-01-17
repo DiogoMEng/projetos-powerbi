@@ -58,10 +58,65 @@ O dashboard destaca as seguintes métricas principais:
 
 ![visão da home](public/img/visao-home.png)
 
-### Visão de Lucratividade:
+### Visão de Venda Geral:
 
-![Lucratividade](public/img/pre-visualizacao4.png)
+![Visão de Venda Geral](public/img/visao-vendoTipo.png)
 
-### Visão de Satisfação do Cliente:
+### Visão Principais Influenciadores:
 
-![Satisfação do Cliente](public/img/pre-visualizacao5.png)
+![Visão Principais Influenciadores](public/img/visao-principaisInfluenciadores.png)
+
+### Visão de Vendas por Categoria e Pontos de Venda:
+
+![Visão de Vendas por Categoria e Pontos de Venda](public/img/visao-vendaCategoria.png)
+
+### Visão Performance dos Vendedores por Região:
+
+![Visão Performance dos Vendedores por Região](public/img/visao-vendaEstadoVendedor.png)
+
+---
+
+# 🚀 Como Usar
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/DiogoMEng/projetos-powerbi.git
+```
+
+2. Acesse o diretório do projeto:
+
+```bash
+cd ./projetos-powerbi/analiseComercial
+```
+
+3. Abra o arquivo .pbix no Power BI Desktop:
+   - Baixe o Power BI Desktop <a href="https://www.microsoft.com/pt-br/download/details.aspx?id=58494">aqui</a>
+   - Abra o arquivo dashboard-analise-vendas-custos para visualizar e explorar o dashboard.
+
+---
+
+# 📋 Requisitos
+
+- Power BI Desktop instalado.
+- Conexão com as fontes de dados (ou ajuste para usar os arquivos CSV incluídos).
+
+---
+
+# 🤝 Contribuições
+
+Contribuições são sempre bem-vindas! Se você tiver sugestões de melhorias ou quiser reportar algum problema, sinta-se à vontade para abrir uma **issue** ou enviar um **pull request**.
+
+---
+
+# 👤 Autor
+
+**Diogo Dias Mello**  
+Desenvolvedor Backend | Entusiasta de Análise de Dados  
+[LinkedIn](www.linkedin.com/in/diogo-meng) | [Portfólio](https://diogomello-dev.netlify.app)
+
+---
+
+# 📝 Notas Finais
+
+Este Gerenciador de Despesas foi desenvolvido para fins de aprendizado e demonstração. Fique à vontade para utilizá-lo como base para seus próprios projetos de controle financeiro e análise de dados.
