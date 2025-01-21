@@ -27,13 +27,12 @@ O Dashboard de Análise de Recursos Humanos foi criado para:
 
 O dashboard destaca as seguintes métricas principais:
 
-1. **Índice de Retenção**: Proporção de colaboradores mantidos ao longo do tempo.
-2. **Satisfação dos Colaboradores**: Nível de satisfação com o ambiente de trabalho e políticas da empresa.
-3. **Taxa de Absenteísmo**: Percentual de faltas ou atrasos em relação ao total de dias trabalhados.
-4. **Tempo Médio de Permanência**: Período médio que os colaboradores permanecem na organização.
-5. **Produtividade por Setor**: Desempenho médio por departamento ou equipe.
-6. **Investimento em Treinamentos**: Total investido em capacitação por colaborador.
-7. **Desempenho Individual**: Análise de desempenho com base em avaliações regulares.
+1. **Satisfação dos Colaboradores**: Nível de satisfação com o ambiente de trabalho e políticas da empresa.
+2. **Taxa de Absenteísmo**: Percentual de faltas ou atrasos em relação ao total de dias trabalhados.
+3. **Tempo Médio de Permanência**: Período médio que os colaboradores permanecem na organização.
+4. **Produtividade por Setor**: Desempenho médio por departamento ou equipe.
+5. **Investimento em Treinamentos**: Total investido em capacitação por colaborador.
+6. **Desempenho Individual**: Análise de desempenho com base em avaliações regulares.
 
 ---
 
