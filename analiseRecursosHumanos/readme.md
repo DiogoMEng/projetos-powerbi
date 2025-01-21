@@ -54,9 +54,13 @@ O dashboard destaca as seguintes métricas principais:
 
 # 📷 Pré-visualização
 
-### Visão Geral:
+### Visão Perfil Operacional e Disponilidade:
 
-![Visão Geral](public/img/visaoGeral.png)
+![alt text](public/img/perfil_operacional_disponibilidade.png)
+
+### Visão Panorama de Retenção e Satisfação:
+
+![alt text](public/img/panorama_retencao_satisfacao.png)
 
 ---
 
