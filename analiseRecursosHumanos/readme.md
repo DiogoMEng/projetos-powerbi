@@ -27,14 +27,11 @@ O Dashboard de Análise de Recursos Humanos foi criado para:
 
 O dashboard destaca as seguintes métricas principais:
 
-1. **Taxa de Turnover**: Percentual de colaboradores que deixaram a empresa em um período.
-2. **Índice de Retenção**: Proporção de colaboradores mantidos ao longo do tempo.
-3. **Satisfação dos Colaboradores**: Nível de satisfação com o ambiente de trabalho e políticas da empresa.
-4. **Taxa de Absenteísmo**: Percentual de faltas ou atrasos em relação ao total de dias trabalhados.
-5. **Tempo Médio de Permanência**: Período médio que os colaboradores permanecem na organização.
-6. **Produtividade por Setor**: Desempenho médio por departamento ou equipe.
-7. **Investimento em Treinamentos**: Total investido em capacitação por colaborador.
-8. **Desempenho Individual**: Análise de desempenho com base em avaliações regulares.
+1. **Satisfação dos Colaboradores**: Nível de satisfação com o ambiente de trabalho e políticas da empresa.
+2. **Tempo Médio de Permanência**: Período médio que os colaboradores permanecem na organização.
+3. **Produtividade por Setor**: Desempenho médio por departamento ou equipe.
+4. **Investimento em Treinamentos**: Total investido em capacitação por colaborador.
+5. **Desempenho Individual**: Análise de desempenho com base em avaliações regulares.
 
 ---
 
