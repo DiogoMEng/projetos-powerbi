@@ -1,10 +1,8 @@
-﻿EVALUATE
-F_logistica
-
-DEFINE 
+﻿DEFINE 
 //Total de Entregas
 	MEASURE F_logistica[Total de Entregas] =
 		COUNT ( F_logistica[ID_Pedido] )
+
 
 //Total de Entregas no Prazo		
 	MEASURE F_logistica[Total de Entregas no Prazo] =
@@ -13,41 +11,11 @@ DEFINE
 			F_logistica[Status_Entrega] = "No Prazo"
 		)
 		
-//Total de Entregas no Antecipado		
-	MEASURE F_logistica[Total de Entregas no Antecipado] =
-		CALCULATE ( 
-			[Total de Entregas],
-			F_logistica[Status_Entrega] = "Antecipado"
-		)
-		
-//Total de Entregas no Atrasado		
-	MEASURE F_logistica[Total de Entregas no Atrasado] =
-		CALCULATE ( 
-			[Total de Entregas],
-			F_logistica[Status_Entrega] = "Atrasado"
-		)
-		
-		
-		
-// Percentual de Entregas por Equipe
-	MEASURE F_logistica[Percentual de Entregas por Equipe] =
-		VAR TotalPorEquipe = 
-		    CALCULATE(
-		        COUNT(F_logistica[ID_Pedido]), 
-		        ALLEXCEPT(F_logistica, F_logistica[Equipe_Entrega])
-		    )
-		    
-		RETURN
-		    DIVIDE(TotalPorEquipe, [Total de Entregas], 0) * 100
-		
 
 EVALUATE
 	SUMMARIZECOLUMNS (
 		"Total de Entregas", [Total de Entregas],
-		"Total de Entregas no Prazo", [Total de Entregas no Prazo],
-		"Total de Entregas no Antecipado", [Total de Entregas no Antecipado],
-		"Total de Entregas no Atrasado", [Total de Entregas no Atrasado],
-		"Percentual de Entregas por Equipe", [Percentual de Entregas por Equipe]
+		"Total de Entregas no Prazo", [Total de Entregas no Prazo]
 	)
 
 
