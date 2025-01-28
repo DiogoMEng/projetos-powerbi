@@ -1,0 +1,56 @@
+﻿DEFINE
+
+//# TOTAL DE RECEITAS #
+
+	MEASURE F_dados_financeiros[TotalReceitas] =
+		CALCULATE (
+			SUM ( F_dados_financeiros[Valor] ),
+			D_tipo[Tipo] = "Receitas"
+		)
+		
+//# TOTAL DE DESPESAS #
+
+	MEASURE F_dados_financeiros[TotalDespesas] =
+		CALCULATE (
+			SUM ( F_dados_financeiros[Valor] ),
+			D_tipo[Tipo] = "Despesas"
+		)
+		
+//# LUCRO #
+
+	MEASURE F_dados_financeiros[Lucro] =
+		[TotalReceitas] - [TotalDespesas]
+		
+//# MARGEM DE LUCRO #
+	
+	MEASURE F_dados_financeiros[MargemLucro] = ( DIVIDE ( [Lucro], [TotalReceitas], 0 ) ) * 100
+	
+//# COR DE FUNDO - DESPESAS #
+
+	MEASURE F_dados_financeiros[CorFundo] =
+		// valor de teste
+		VAR _ValorTotal = 35000
+		
+		RETURN
+			SWITCH (
+				TRUE(),
+				_ValorTotal >= 30000 && _ValorTotal <= 60000, "#D9B300",
+				_ValorTotal > 60000, "#D64554"
+			)
+			
+//# MÊS E ANO DO MAIOR LUCRO #
+
+	MEASURE F_dados_financeiros[MesAnoMaiorLucro] =
+		
+		
+
+EVALUATE
+SUMMARIZE(
+	F_dados_financeiros,
+	"Total de Receitas", [TotalReceitas],
+	"Total de Despesas", [TotalDespesas],
+	"Lucro", [Lucro],
+	"Margem de Lucro", [MargemLucro],
+	"Cor de Fundo - Despesas", [CorFundo],
+	"Mês e Ano do maior lucro", [MesAnoMaiorLucro]
+)
