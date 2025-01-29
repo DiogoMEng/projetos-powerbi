@@ -38,10 +38,53 @@
 				_ValorTotal > 60000, "#D64554"
 			)
 			
-//# MÊS E ANO DO MAIOR LUCRO #
+//# MÊS E ANO DO MAIOR E MENOR LUCRO #
 
 	MEASURE F_dados_financeiros[MesAnoMaiorLucro] =
+		VAR _maxLucro = MAXX (
+			SUMMARIZE (
+				D_calendar,
+				D_calendar[Mês/Ano],
+				"Lucro Mensal", [Lucro]
+			),
+			[Lucro Mensal]
+		)
 		
+		VAR _melhorPeriodo = TOPN (
+			1,
+			SUMMARIZE (
+				D_calendar,
+				D_calendar[Mês/Ano],
+				"Lucro Mensal", [Lucro]
+			),
+			[Lucro Mensal],
+			ASC
+		)
+		
+//		Na base dados não a valores para o ano de 2021,
+//		por este motivo filtrei a tabela para excluir o ano
+//		nesta medida
+		VAR _piorPeriodo = TOPN (
+			1,
+			FILTER (
+				SUMMARIZE (
+					D_calendar,
+					D_calendar[Mês/Ano],
+					D_calendar[Ano],
+					"Lucro Mensal", [Lucro]
+				),
+				D_calendar[Ano] <> 2021
+			),
+			[Lucro Mensal],
+			ASC
+		)
+		
+		RETURN
+			SELECTCOLUMNS (
+				_piorPeriodo,
+				"Pior Mês/Ano",
+				D_calendar[Mês/Ano]
+			)
 		
 
 EVALUATE

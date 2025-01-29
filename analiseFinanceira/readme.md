@@ -59,6 +59,10 @@ O dashboard inclui os seguintes indicadores financeiros:
 
 ![Visão Financeira Geral](public/img/visao_financeira_geral.png)
 
+### Visão Fluxo de Caixa:
+
+![Visão Fluxo de Caixa](public/img/fluxo_caixa.png)
+
 ---
 
 # 🚀 Como Usar
