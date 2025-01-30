@@ -85,7 +85,31 @@
 				"Pior Mês/Ano",
 				D_calendar[Mês/Ano]
 			)
+
+//# RETORNO SOBRE O INVESTIMENTO (ROI) #
+
+	MEASURE F_dados_financeiros[ROI] =
+		DIVIDE ( 
+			[# Total de Receitas] - [# Total de Despesas], 
+			[# Total de Despesas] 
+		)
+	
+
+//# ENDIVIDAMENTO #
+
+	MEASURE F_dados_financeiros[endividamento] =
+		VAR _passivoTotal = CALCULATE (
+				SUM ( F_dados_financeiros[Valor] ),
+				D_componente[Componente] IN { "Impostos", "Salários", "Segurança" }
+		)
 		
+		VAR _ativoTotal = CALCULATE (
+			SUM ( F_dados_financeiros[Valor] ),
+			D_componente[Componente] IN { "Vendas", "Aluguéis", "Franquias", "Investimentos" }
+		)
+		
+		RETURN
+			DIVIDE ( _passivoTotal, _ativoTotal )
 
 EVALUATE
 SUMMARIZE(
@@ -95,5 +119,7 @@ SUMMARIZE(
 	"Lucro", [Lucro],
 	"Margem de Lucro", [MargemLucro],
 	"Cor de Fundo - Despesas", [CorFundo],
-	"Mês e Ano do maior lucro", [MesAnoMaiorLucro]
+	"Mês e Ano do maior lucro", [MesAnoMaiorLucro],
+	"Retorno sobre o Investimento (ROI %)", [ROI],
+	"Endividamento", [endividamento]
 )

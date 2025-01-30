@@ -32,8 +32,7 @@ O dashboard inclui os seguintes indicadores financeiros:
 3. **Retorno sobre o Investimento (ROI)**: Indicador do retorno obtido em relação ao investimento inicial.
 4. **Endividamento**: Razão entre a dívida total da empresa e seu patrimônio líquido.
 5. **Faturamento**: Receita total gerada pela empresa em um determinado período.
-6. **Custo de Aquisição de Clientes (CAC)**: Valor médio gasto para adquirir cada novo cliente.
-7. **Prazo Médio de Pagamento (PMP)**: Tempo médio para pagar fornecedores, calculado dividindo o valor total das compras pelo valor pago no período.
+6. **Prazo Médio de Pagamento (PMP)**: Tempo médio para pagar fornecedores, calculado dividindo o valor total das compras pelo valor pago no período.
 
 ---
 
@@ -62,6 +61,10 @@ O dashboard inclui os seguintes indicadores financeiros:
 ### Visão Fluxo de Caixa:
 
 ![Visão Fluxo de Caixa](public/img/fluxo_caixa.png)
+
+### Visão ROI e Endividamento:
+
+![Visão ROI e Endividamento](public/img/visao_roi_endividamento.png)
 
 ---
 
