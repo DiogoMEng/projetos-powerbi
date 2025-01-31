@@ -1,0 +1,125 @@
+﻿DEFINE
+
+//# TOTAL DE RECEITAS #
+
+	MEASURE F_dados_financeiros[TotalReceitas] =
+		CALCULATE (
+			SUM ( F_dados_financeiros[Valor] ),
+			D_tipo[Tipo] = "Receitas"
+		)
+		
+//# TOTAL DE DESPESAS #
+
+	MEASURE F_dados_financeiros[TotalDespesas] =
+		CALCULATE (
+			SUM ( F_dados_financeiros[Valor] ),
+			D_tipo[Tipo] = "Despesas"
+		)
+		
+//# LUCRO #
+
+	MEASURE F_dados_financeiros[Lucro] =
+		[TotalReceitas] - [TotalDespesas]
+		
+//# MARGEM DE LUCRO #
+	
+	MEASURE F_dados_financeiros[MargemLucro] = ( DIVIDE ( [Lucro], [TotalReceitas], 0 ) ) * 100
+	
+//# COR DE FUNDO - DESPESAS #
+
+	MEASURE F_dados_financeiros[CorFundo] =
+		// valor de teste
+		VAR _ValorTotal = 35000
+		
+		RETURN
+			SWITCH (
+				TRUE(),
+				_ValorTotal >= 30000 && _ValorTotal <= 60000, "#D9B300",
+				_ValorTotal > 60000, "#D64554"
+			)
+			
+//# MÊS E ANO DO MAIOR E MENOR LUCRO #
+
+	MEASURE F_dados_financeiros[MesAnoMaiorLucro] =
+		VAR _maxLucro = MAXX (
+			SUMMARIZE (
+				D_calendar,
+				D_calendar[Mês/Ano],
+				"Lucro Mensal", [Lucro]
+			),
+			[Lucro Mensal]
+		)
+		
+		VAR _melhorPeriodo = TOPN (
+			1,
+			SUMMARIZE (
+				D_calendar,
+				D_calendar[Mês/Ano],
+				"Lucro Mensal", [Lucro]
+			),
+			[Lucro Mensal],
+			ASC
+		)
+		
+//		Na base dados não a valores para o ano de 2021,
+//		por este motivo filtrei a tabela para excluir o ano
+//		nesta medida
+		VAR _piorPeriodo = TOPN (
+			1,
+			FILTER (
+				SUMMARIZE (
+					D_calendar,
+					D_calendar[Mês/Ano],
+					D_calendar[Ano],
+					"Lucro Mensal", [Lucro]
+				),
+				D_calendar[Ano] <> 2021
+			),
+			[Lucro Mensal],
+			ASC
+		)
+		
+		RETURN
+			SELECTCOLUMNS (
+				_piorPeriodo,
+				"Pior Mês/Ano",
+				D_calendar[Mês/Ano]
+			)
+
+//# RETORNO SOBRE O INVESTIMENTO (ROI) #
+
+	MEASURE F_dados_financeiros[ROI] =
+		DIVIDE ( 
+			[# Total de Receitas] - [# Total de Despesas], 
+			[# Total de Despesas] 
+		)
+	
+
+//# ENDIVIDAMENTO #
+
+	MEASURE F_dados_financeiros[endividamento] =
+		VAR _passivoTotal = CALCULATE (
+				SUM ( F_dados_financeiros[Valor] ),
+				D_componente[Componente] IN { "Impostos", "Salários", "Segurança" }
+		)
+		
+		VAR _ativoTotal = CALCULATE (
+			SUM ( F_dados_financeiros[Valor] ),
+			D_componente[Componente] IN { "Vendas", "Aluguéis", "Franquias", "Investimentos" }
+		)
+		
+		RETURN
+			DIVIDE ( _passivoTotal, _ativoTotal )
+
+EVALUATE
+SUMMARIZE(
+	F_dados_financeiros,
+	"Total de Receitas", [TotalReceitas],
+	"Total de Despesas", [TotalDespesas],
+	"Lucro", [Lucro],
+	"Margem de Lucro", [MargemLucro],
+	"Cor de Fundo - Despesas", [CorFundo],
+	"Mês e Ano do maior lucro", [MesAnoMaiorLucro],
+	"Retorno sobre o Investimento (ROI %)", [ROI],
+	"Endividamento", [endividamento]
+)
