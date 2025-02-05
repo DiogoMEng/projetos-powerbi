@@ -1,0 +1,33 @@
+﻿DEFINE
+	
+//# RETORNA O NOME DA EMPRESA SELECIONADA #
+	MEASURE F_empresas[Empresa_Selecionada] =	
+		VAR _empresa = SELECTEDVALUE ( D_empresa[Empresa] )
+	
+		RETURN
+			IF (
+				ISBLANK ( _empresa ),
+				"Volume Total", 
+				"Volume Total da " & _empresa
+			)
+			
+//# VARIAÇÃO DA MÉDIA DE FECHAMENTO #			
+	MEASURE F_empresas[Média Fechamento MoM%] =
+        VAR _prevMonth =
+			CALCULATE ( 
+				AVERAGE( F_empresas[Close/Last] ), 
+				DATEADD ( D_calendar[Date], -1, MONTH ) 
+			)
+			
+		VAR _mediaFechamentoAtual =
+			AVERAGE ( F_empresas[Close/Last] )
+			
+		RETURN
+			DIVIDE ( _mediaFechamentoAtual - _prevMonth, _prevMonth )
+
+EVALUATE
+	SUMMARIZE (
+		F_empresas,
+		"Empresa", [Empresa_Selecionada],
+		"Variação da Média de Fechamento", [Média Fechamento MoM%]
+	)

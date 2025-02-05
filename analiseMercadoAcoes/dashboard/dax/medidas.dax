@@ -1,0 +1,19 @@
+﻿DEFINE
+	
+//# RETORNA O NOME DA EMPRESA SELECIONADA #
+	MEASURE F_empresas[Empresa_Selecionada] =	
+		VAR _empresa = SELECTEDVALUE ( D_empresa[Empresa] )
+	
+		RETURN
+			IF (
+				ISBLANK ( _empresa ),
+				"Volume Total", 
+				"Volume Total da " & _empresa
+			)
+
+EVALUATE
+	SUMMARIZE (
+		F_empresas,
+		"Empresa", [Empresa_Selecionada],
+		"Variacao de Volume", [variacaoDeVolume]
+	)
